@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "author": "Богдан Налімов",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb2", "top": 83.4, "left": 338.8, "attrs": {} },
+    {
+      "type": "board-st-nucleo-c031c6",
+      "id": "nucleo",
+      "top": -152.77,
+      "left": 114.22,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 169.2,
+      "left": 579.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 205.55,
+      "left": 460.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -228,
+      "left": 645,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -270.1, "left": -38.6, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -409.37, "left": 92.8, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid1", "top": 102.95, "left": -399.76, "attrs": {} }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:PA3", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:PA2", "", [] ],
+    [ "r1:2", "led1:C", "green", [ "v0" ] ],
+    [ "pot1:GND", "nucleo:GND.2", "black", [ "v0" ] ],
+    [ "pot1:VCC", "nucleo:5V.2", "red", [ "v0" ] ],
+    [ "pot1:SIG", "lcd1:V0", "green", [ "v48", "h143.6" ] ],
+    [ "nucleo:D12", "nucleo:D9", "green", [ "h0" ] ],
+    [ "led1:A", "nucleo:D6", "green", [ "v0" ] ],
+    [ "r1:1", "nucleo:GND.9", "green", [ "v0" ] ],
+    [ "bz1:2", "nucleo:D3", "green", [ "v0" ] ],
+    [ "bz1:1", "nucleo:GND.9", "green", [ "v0" ] ],
+    [ "rfid1:SDA", "nucleo:D10", "green", [ "h0" ] ],
+    [ "rfid1:SCK", "nucleo:D13", "green", [ "h0" ] ],
+    [ "rfid1:MOSI", "nucleo:D11", "green", [ "h0" ] ],
+    [ "rfid1:MISO", "nucleo:D12", "green", [ "h0" ] ],
+    [ "rfid1:RST", "nucleo:D2", "green", [ "h0" ] ],
+    [ "rfid1:3.3V", "nucleo:3V3.2", "green", [ "h374.4", "v-182.4" ] ],
+    [ "lcd1:D4", "nucleo:D4", "green", [ "v0" ] ],
+    [ "lcd1:D5", "nucleo:D5", "green", [ "v0" ] ],
+    [ "lcd1:D6", "nucleo:A0", "green", [ "v0" ] ],
+    [ "lcd1:D7", "nucleo:D7", "green", [ "v0" ] ],
+    [ "led1:A", "bb2:26b.g", "", [ "$bb" ] ],
+    [ "led1:C", "bb2:25b.g", "", [ "$bb" ] ],
+    [ "r1:1", "bb2:11b.g", "", [ "$bb" ] ],
+    [ "r1:2", "bb2:17b.g", "", [ "$bb" ] ],
+    [ "lcd1:VSS", "nucleo:GND.2", "green", [ "v0" ] ],
+    [ "lcd1:VDD", "nucleo:5V.2", "green", [ "v0" ] ],
+    [ "lcd1:RS", "nucleo:D8", "green", [ "v0" ] ],
+    [ "lcd1:RW", "nucleo:GND.9", "green", [ "v0" ] ],
+    [ "lcd1:E", "nucleo:D9", "green", [ "v0" ] ],
+    [ "lcd1:A", "nucleo:5V.2", "green", [ "v0" ] ],
+    [ "lcd1:K", "nucleo:GND.9", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
